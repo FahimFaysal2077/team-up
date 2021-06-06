@@ -5,18 +5,26 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import Home from './components/Home/Home/Home';
+import styled from 'styled-components';
+import Sidebar from './components/Home/Sidebar/Sidebar/Sidebar';
+import Header from './components/Home/Header/Header';
+import Chat from './components/Home/Chat/Chat';
+
 
 function App() {
   return (
     <div className="app">
       <Router>
         <>
-          <Switch>
-            <Route path="/" exact>
-              <Home />
-            </Route>
-          </Switch>
+          <Header />
+          <AppBody>
+            <Sidebar />
+            <Switch>
+              <Route path="/" exact>
+                <Chat />
+              </Route>
+            </Switch>
+          </AppBody>
         </>
       </Router>
     </div>
@@ -24,3 +32,8 @@ function App() {
 }
 
 export default App;
+
+const  AppBody = styled.div`
+ display: flex;
+ height: 100vh;
+`;
