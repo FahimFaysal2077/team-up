@@ -14,17 +14,19 @@ import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import AddIcon from '@material-ui/icons/Add';
 import { useCollection } from 'react-firebase-hooks/firestore';
-import { db } from '../../../Login/Login/Login';
+import { auth, db } from '../../../Login/Login/Login';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 
 function SidebarHeader() {
-    const [channels, loading, error] = useCollection(db.collection('rooms'));
+    const [channels] = useCollection(db.collection('rooms'));
+    const [user] = useAuthState(auth);
 
     return (
         <SidebarContainer>
             <SidebarHeaders>
                 <SidebarInfo>
-                    <h2>FAHIM HQ</h2>
+                    <h2>TEAM UP</h2>
                     <h3>
                         <FiberManualRecordIcon />
                         Fahim Faysal
